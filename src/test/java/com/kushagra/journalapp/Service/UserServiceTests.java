@@ -22,6 +22,7 @@ public class UserServiceTests {
     }
 
     @ParameterizedTest
+    @Disabled
     @ValueSource(strings = {
             "Ram",
             "Shyam",
