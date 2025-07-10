@@ -27,7 +27,6 @@ public class UserDetailsServiceImplTests {
     private UserRepository userRepository;
 
     @Test
-    @Disabled
     void loadByUsername() {
         when(userRepository.findByUsername(ArgumentMatchers.anyString()))
                 .thenReturn(User.builder().username("Ram").password("Ram").roles(new ArrayList<>()).build());
