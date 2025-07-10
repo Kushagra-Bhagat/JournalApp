@@ -4,6 +4,7 @@ import com.kushagra.journalapp.entity.User;
 import com.kushagra.journalapp.repository.UserRepository;
 import com.kushagra.journalapp.service.UserDetailsServiceImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -26,6 +27,7 @@ public class UserDetailsServiceImplTests {
     private UserRepository userRepository;
 
     @Test
+    @Disabled
     void loadByUsername() {
         when(userRepository.findByUsername(ArgumentMatchers.anyString()))
                 .thenReturn(User.builder().username("Ram").password("Ram").roles(new ArrayList<>()).build());

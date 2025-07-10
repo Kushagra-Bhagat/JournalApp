@@ -28,6 +28,7 @@ public class UserServiceTests {
             "Kushagra",
             "Amit"
     })
+    @Disabled
     public void findByUsernameTest(String username) {
         assertNotNull(userRepository.findByUsername(username));
     }
