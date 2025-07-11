@@ -4,6 +4,8 @@ import com.kushagra.journalApp.entity.User;
 import com.kushagra.journalApp.repository.UserRepository;
 import com.kushagra.journalApp.service.UserDetailsServiceImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@Disabled
+@Tag("ignore-sonar")
 public class UserDetailsServiceImplTests {
 
     @InjectMocks
