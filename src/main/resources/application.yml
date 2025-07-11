@@ -1,0 +1,8 @@
+server:
+  servlet:
+    context-path: /journal
+
+quote:
+  api:
+    key: ${QUOTE_API_KEY}
+
