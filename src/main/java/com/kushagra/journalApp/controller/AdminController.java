@@ -1,5 +1,6 @@
 package com.kushagra.journalApp.controller;
 
+import com.kushagra.journalApp.cache.AppCache;
 import com.kushagra.journalApp.entity.User;
 import com.kushagra.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AppCache appCache;
 
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
@@ -28,5 +31,10 @@ public class AdminController {
     @PostMapping("/create-admin-user")
     public void createAdmin(@RequestBody User user) {
         userService.saveNewAdminUser(user);
+    }
+
+    @GetMapping("/reset-app-cache")
+    public void resetAppCache() {
+        appCache.init();
     }
 }

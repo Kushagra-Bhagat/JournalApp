@@ -1,6 +1,8 @@
 package com.kushagra.journalApp.service;
 
+import com.kushagra.journalApp.cache.AppCache;
 import com.kushagra.journalApp.config.QuoteApiConfig;
+import com.kushagra.journalApp.repository.ConfigJournalAppRepository;
 import com.kushagra.journalApp.response.api.QuoteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -16,6 +18,9 @@ public class QuoteService {
     private final RestTemplate restTemplate;
     private final QuoteApiConfig quoteApiConfig;
 
+    @Autowired
+    private AppCache appCache;
+
     public QuoteService(RestTemplate restTemplate, QuoteApiConfig quoteApiConfig) {
         this.restTemplate = restTemplate;
         this.quoteApiConfig = quoteApiConfig;
@@ -28,7 +33,7 @@ public class QuoteService {
         HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
 
         return restTemplate.exchange(
-                quoteApiConfig.getUrl(),
+                appCache.APP_CACHE.get("quote_api"),
                 HttpMethod.GET,
                 httpEntity,
                 new ParameterizedTypeReference<List<QuoteResponse>>() {}
