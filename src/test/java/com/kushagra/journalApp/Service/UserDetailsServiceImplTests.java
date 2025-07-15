@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@Disabled
-@Tag("ignore-sonar")
 public class UserDetailsServiceImplTests {
 
     @InjectMocks
@@ -30,11 +28,11 @@ public class UserDetailsServiceImplTests {
     private UserRepository userRepository;
 
     @Test
-    void loadByUsername() {
+    void loadByUsername_shouldReturnUserDetails() {
         when(userRepository.findByUsername(ArgumentMatchers.anyString()))
                 .thenReturn(User.builder().username("Ram").password("Ram").roles(new ArrayList<>()).build());
         UserDetails user = userDetailsService.loadUserByUsername("Ram");
-        Assertions.assertNotNull(user);
+        Assertions.assertNotNull(user, "Expected User details to be returned");
     }
 
 }

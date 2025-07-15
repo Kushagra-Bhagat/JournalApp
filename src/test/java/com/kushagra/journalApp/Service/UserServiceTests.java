@@ -11,21 +11,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Disabled
-@Tag("ignore-sonar")
 public class UserServiceTests {
 
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    @Disabled
     public void findByUserNameTest() {
         assertNotNull(userRepository.findByUsername("Ram"));
     }
 
     @ParameterizedTest
-    @Disabled
     @ValueSource(strings = {
             "Ram",
             "Shyam",
