@@ -1,8 +1,6 @@
 package com.kushagra.journalApp.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,6 +12,8 @@ import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "users")
 public class User {
 
@@ -24,6 +24,8 @@ public class User {
     private String username;
     @NonNull
     private String password;
+    private String email;
+    private String sentimentAnalysis;
     @DBRef
     private List<JournalEntry> journalEntries = new ArrayList<>();
     private List<String> roles;
