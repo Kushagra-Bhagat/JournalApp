@@ -27,10 +27,10 @@ public class SpringSecurityDev {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(request -> request
-                .requestMatchers("/public/**").permitAll()
-                .requestMatchers("/users/**", "/journal/**").authenticated()
+//                .requestMatchers("/public/**").permitAll()
+//                .requestMatchers("/users/**", "/journal/**").authenticated()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated())
+                .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();

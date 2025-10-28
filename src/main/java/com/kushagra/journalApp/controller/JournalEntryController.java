@@ -16,8 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/journal")
+@RequestMapping("/")
 public class JournalEntryController {
+
+
+    public JournalEntryController() {
+        System.out.println("JournalEntryController initialized!");
+    }
 
     @Autowired
     private JournalEntryService journalEntryService;
@@ -26,7 +31,7 @@ public class JournalEntryController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<?> getAllJournalEntriesForUser() {
+    public ResponseEntity<List<JournalEntry>> getAllJournalEntriesForUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userService.findByUserName(username);
@@ -34,7 +39,7 @@ public class JournalEntryController {
         if (all != null && !all.isEmpty()) {
             return new ResponseEntity<>(all, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping
